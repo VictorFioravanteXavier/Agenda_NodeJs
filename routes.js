@@ -7,5 +7,6 @@ router.get('/', homeController.index);
 
 //Rotas login 
 router.get('/login/index', loginController.index)
+router.post('/login/register', loginController.register)
 
 module.exports = router;
