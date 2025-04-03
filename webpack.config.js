@@ -16,19 +16,6 @@ module.exports = {
           loader: 'babel-loader'
         }
       },
-      {
-        test: /\.css$/i, // The '/i' makes it case insensitive
-        use: [
-          'style-loader',
-          {
-            loader: 'css-loader',
-            options: {
-              importLoaders: 1,
-              esModule: false
-            }
-          }
-        ]
-      }
     ]
   },
   devtool: 'source-map'
