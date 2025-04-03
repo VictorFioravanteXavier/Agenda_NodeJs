@@ -17,8 +17,8 @@ function Contato(body) {
     this.contato = null
 }
 
-Contato.buscaPorId = async function(id) {
-    if(typeof id !== 'string') return
+Contato.buscaPorId = async function (id) {
+    if (typeof id !== 'string') return
 
     const contato = await ContatoModule.findById(id);
     return contato
@@ -63,5 +63,14 @@ Contato.prototype.cleanUp = function () {
     }
 }
 
+Contato.prototype.edit = async function(id) {
+    if (typeof id !== 'string') return;
+
+    this.valida();
+
+    if (this.errors.length > 0) return;
+
+    this.contato = await ContatoModule.findByIdAndUpdate(id, this.body, {new: true});
+};
 
 module.exports = Contato 
