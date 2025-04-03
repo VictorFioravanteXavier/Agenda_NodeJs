@@ -20,7 +20,15 @@ const helmet = require('helmet');
 const csfr = require('csurf')
 const { middlewareGlobal, checkCsrfError, csrfMidlleware } = require("./src/middlewares/middleware");
 
-app.use(helmet())
+app.use(
+    helmet.contentSecurityPolicy({
+      directives: {
+        ...helmet.contentSecurityPolicy.getDefaultDirectives(),
+        "script-src": ["'self'", "https://cdn.jsdelivr.net"],
+        "script-src-elem": ["'self'", "https://cdn.jsdelivr.net"], // Explicitly allow script tags
+      },
+    })
+  );    
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 app.use(express.static(path.resolve(__dirname, 'public')))
