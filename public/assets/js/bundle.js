@@ -14,7 +14,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var validator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! validator */ "./node_modules/validator/index.js");
 /* harmony import */ var validator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(validator__WEBPACK_IMPORTED_MODULE_0__);
- // Fixed import
 
 class Login {
   constructor(formClass) {
@@ -36,18 +35,14 @@ class Login {
     const passwordInput = el.querySelector('input[name="password"]');
     let error = false;
     if (!validator__WEBPACK_IMPORTED_MODULE_0___default().isEmail(emailInput.value)) {
-      alert('Email inválido');
+      alert('Email invalido ');
       error = true;
     }
     if (passwordInput.value.length < 3 || passwordInput.value.length > 50) {
-      // Fixed logic
-      alert('Senha precisa ter entre 3 a 50 caracteres');
+      alert('Senha precisa ter entre 3 a 50 caracteres ');
       error = true;
     }
-    if (!error) {
-      // Submit form if validation passes
-      el.submit();
-    }
+    if (!error) el.submit();
   }
 }
 
